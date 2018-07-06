@@ -20,7 +20,7 @@ Usage
 	    -c, --no-color                   Remove all color information from output
 	    -F, --no-flash                   Remove all flash (blinking) information from output
 	    -s, --simple-positions           Convert to simple top/bottom center-aligned captions
-			-n, --no-positions							 Removes all positional information
+	    -n, --no-positions               Removes all positional information
 	    -h, --help                       Show this help message and quit.
 
 The API can also be used programmatically, the `bin/subconv` file is just an
