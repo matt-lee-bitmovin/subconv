@@ -10,7 +10,7 @@ module Subconv
 
     # Grid size
     GRID_ROWS = 15
-    GRID_COLUMNS = 32
+    GRID_COLUMNS = 128
 
     # Grid is just an array with some extra convenience functions and a default size
     class Grid < Array
@@ -316,10 +316,6 @@ module Subconv
 
               last_command = word
             end
-
-          ensure
-            # Advance one frame for each word read
-            @now += 1
           end
         end
       end
