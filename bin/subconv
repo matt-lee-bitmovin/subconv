@@ -21,6 +21,9 @@ OptionParser.new do |opts|
   opts.on('-s', '--simple-positions', 'Convert to simple top/bottom center-aligned captions') do
     options[:simple_positions] = true
   end
+  opts.on('-n', '--no-positions', 'Removes all positional information') do
+    options[:no_positions] = true
+  end
   opts.on_tail('-h', '--help', 'Show this help message and quit.') do
     puts opts.help
     exit
@@ -42,6 +45,10 @@ filter_options[:remove_flash] = true if options[:no_flash]
 if options[:simple_positions]
   filter_options[:merge_by_position] = true
   filter_options[:xy_position_to_top_or_bottom] = true
+end
+if options[:no_positions]
+  filter_options[:merge_by_position] = true
+  filter_options[:remove_all_postion] = true
 end
 Subconv::CaptionFilter.new(filter_options).process! captions
 writer = Subconv::WebVtt::Writer.new trim_line_whitespace: true

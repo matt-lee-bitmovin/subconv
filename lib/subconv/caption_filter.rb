@@ -47,6 +47,12 @@ module Subconv
           caption.align = :middle
         end
 
+        if @options[:remove_all_postion]
+          caption.position = :none
+          # x position is removed altogether and the caption is now center-aligned
+          caption.align = :middle
+        end
+
         # Captions are expected to be ordered by increasing timespan and y position (this is
         # guaranteed for the SCC reader)
         if @options[:merge_by_position] && is_same_timespan && open_captions.key?(caption.position)

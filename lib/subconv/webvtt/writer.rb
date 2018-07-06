@@ -40,6 +40,8 @@ module Subconv
                                '5%'
                              when :bottom
                                '-1,end'
+                             when :none
+                               'none'
                              else
                                fail "Unknown position #{caption.position}"
                              end
@@ -47,6 +49,7 @@ module Subconv
 
         # Remove align if it is the default value anyway
         settings.delete('align') if settings['align'] == 'middle'
+        settings.delete('line') if settings['line'] == 'none'
 
         # Convert settings to string representation
         settings_string = settings.map { |setting|
@@ -75,14 +78,14 @@ module Subconv
 
       # Convert a timecode to the h/m/s format required by WebVTT
       def timecode_to_webvtt(time)
-        value = time.to_seconds
 
-        milliseconds = ((value * 1000) % 1000).to_i
-        seconds      =  value.to_i % 60
-        minutes      = (value.to_i / 60) % 60
-        hours        =  value.to_i / 60 / 60
+        milliseconds = time.frames * time.frame_interval * 1000
+        milliseconds_rounded = milliseconds.round(0)
+        seconds      = time.seconds
+        minutes      = time.minutes
+        hours        = time.hours
 
-        format(TIMECODE_FORMAT, hours, minutes, seconds, milliseconds)
+        format(TIMECODE_FORMAT, hours, minutes, seconds, milliseconds_rounded)
       end
 
       # Replace WebVTT special characters in the text
