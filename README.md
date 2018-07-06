@@ -1,9 +1,3 @@
-[![Gem Version](https://badge.fury.io/rb/subconv.svg)](http://badge.fury.io/rb/subconv)
-[![Dependency Status](https://gemnasium.com/pkerling/subconv.svg)](https://gemnasium.com/pkerling/subconv)
-[![Build Status](https://travis-ci.org/pkerling/subconv.svg?branch=master)](https://travis-ci.org/pkerling/subconv)
-[![Coverage Status](https://coveralls.io/repos/github/pkerling/subconv/badge.svg?branch=master)](https://coveralls.io/github/pkerling/subconv?branch=master)
-[![Inline docs](http://inch-ci.org/github/pkerling/subconv.svg?branch=master)](http://inch-ci.org/github/pkerling/subconv)
-
 subconv - Ruby SCC (EIA-608) to WebVTT subtitle converter
 =========================================================
 
@@ -26,6 +20,7 @@ Usage
 	    -c, --no-color                   Remove all color information from output
 	    -F, --no-flash                   Remove all flash (blinking) information from output
 	    -s, --simple-positions           Convert to simple top/bottom center-aligned captions
+			-n, --no-positions							 Removes all positional information
 	    -h, --help                       Show this help message and quit.
 
 The API can also be used programmatically, the `bin/subconv` file is just an
